@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>ログイン画面</h1>
-    <form th:action="@{/}" method="post"></form>
+    <form th:action="@{/}" th:object="LoginForm" method="post"></form>
     <div class="text">ユーザID
       <input type="text">
     </div>

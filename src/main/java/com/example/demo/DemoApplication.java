@@ -1,3 +1,9 @@
+/**
+ * アプリケーションクラス
+ * 
+ * ver:1.0.0 (2022/04/24) [新規作成] A
+ * 
+ */
 package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
