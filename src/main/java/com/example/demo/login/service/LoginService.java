@@ -16,7 +16,7 @@ public class LoginService {
     public LoginBean txSelectLoginUser(LoginForm form) {
         
         // ユーザー検索
-        LoginBean bean = loginRepository.getUserLoginInfo(form);
+        LoginBean bean = loginRepository.getLoginUser(form);
         
         return bean;
     }

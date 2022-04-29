@@ -35,12 +35,15 @@ public class LoginController {
      * @return 遷移先
      */
     @GetMapping("/login_moveLogin")
-    public String moveLogin() {
+    public String moveLogin(Model model) {
+        LoginForm form = new LoginForm();
+        model.addAttribute("form", form);
         return "login/login";
     }
     
     @PostMapping("/login_execute")
-    public String execute(@ModelAttribute LoginForm form, Model model) {
+    public String execute(Model model,
+                          @ModelAttribute LoginForm form) {
         
         // ユーザー検索
         LoginBean bean = loginService.txSelectLoginUser(form);
