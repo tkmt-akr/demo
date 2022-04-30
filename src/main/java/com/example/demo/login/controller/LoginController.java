@@ -48,6 +48,10 @@ public class LoginController {
         // ユーザー検索
         LoginBean bean = loginService.txSelectLoginUser(form);
         
+        if (bean == null) {
+            return "login/login";
+        }
+        
         return "detail/detail";
     }
 }

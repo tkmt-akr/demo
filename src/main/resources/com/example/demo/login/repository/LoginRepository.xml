@@ -11,5 +11,8 @@
       *
     FROM
       USER_TABLE
+    WHERE
+        USER_NAME = #{userName}
+      AND PASSWORD = #{password}
   </select>
 </mapper>
