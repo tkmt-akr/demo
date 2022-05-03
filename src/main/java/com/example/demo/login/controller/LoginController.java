@@ -32,7 +32,8 @@ public class LoginController {
     /**
      * 初期表示
      * 
-     * @return 遷移先
+     * @param model Modelオブジェクト
+     * @return String 遷移先
      */
     @GetMapping("/login_moveLogin")
     public String moveLogin(Model model) {
@@ -41,17 +42,57 @@ public class LoginController {
         return "login/login";
     }
     
+    /**
+     * ログイン処理
+     * 
+     * @param model Modelオブジェクト
+     * @param form  ログイン画面フォーム
+     * @return String 遷移先
+     */
     @PostMapping("/login_execute")
-    public String execute(Model model,
-                          @ModelAttribute LoginForm form) {
+    public String executeLogin(Model model,
+                          @ModelAttribute LoginForm form) throws Exception {
         
         // ユーザー検索
         LoginBean bean = loginService.txSelectLoginUser(form);
         
+        // 検索結果が0件の場合
         if (bean == null) {
             return "login/login";
         }
         
         return "detail/detail";
+    }
+
+    /**
+     * 新規登録画面へ遷移
+     * 
+     * @return String 遷移先
+     */
+    @GetMapping("/register_move")
+    public String moveRegister () {
+        return "register/register";
+    }
+
+    /**
+     * ユーザ新規登録処理
+     * 
+     * @param model Modelオブジェクト
+     * @param form 新規登録画面フォーム
+     * @return String 遷移先
+     */
+    @PostMapping("/register_execute")
+    public String executeRegister(Model model,
+                          @ModelAttribute LoginForm form) {
+        
+        // ユーザ登録処理
+        int count = loginService.txInsertUser(form);
+        
+        // 更新件数が0件の場合
+        if (count == 0) {
+            return "detail/detail";
+        }
+        
+        return "login/login";
     }
 }

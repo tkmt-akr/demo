@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/common/common.css" />
-    <title>ログイン画面</title>
+    <title>新規登録画面</title>
   </head>
   <body>
-    <h1>ログイン画面</h1>
-    <form th:action="@{/login_execute}" th:object="${form}" method="post">
+    <h1>新規登録画面</h1>
+    <form th:action="@{/register_execute}" th:object="${form}" method="post">
     <div class="text">ユーザID
       <input type="text" name="userName">
     </div>
@@ -17,12 +17,9 @@
     </div>
     <br>
     <div class="submit">
-      <input type="submit" value="ログイン">
+      <input type="submit" value="登録">
     </div>
     <br>
     </form>
-    <div class="link">
-      <a href="register/register.html" th:href="@{/register_move}">新規登録</a>
-    </div>
   </body>
 </html>
